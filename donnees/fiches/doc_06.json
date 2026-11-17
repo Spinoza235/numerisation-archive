@@ -1,0 +1,20 @@
+{
+  "id": "doc_06",
+  "fichier": "doc_06.jpg",
+  "image_origine": "documents/doc_06.jpg",
+  "image_propre": "donnees/images_propres/doc_06.png",
+  "langue": "fr",
+  "confiance_ocr": 93.6,
+  "texte": "ASSOCIATION DES COMMERCÇANTS DE MOURSAL\nMarché de Moursal (fictif)\nPROCÈS-VERBAL DE RÉUNION\nL'an deux mille vingt-quatre, s'est tenue l'assemblée générale de\nl'Association des commerçants de Moursal, sous la présidence de\nMonsieur Ousmane Abdelkerim.\nOrdre du jour : 1) sécurité du marché ; 2) cotisations de l'année ; 3)\ndivers. Après débat, l'assemblée a décidé de recruter deux gardiens de\nnuit et de fixer la cotisation mensuelle à 2 000 FCFA.\nMoursal, le 20 janvier 2024\nLe Secrétaire\nDocument fictif - démonstration",
+  "texte_haut": "ASSOCIATION DES COMMERÇANTS DE MOURSAL\nMarché de Moursal (fictif)\nPROCES-VERBAL DE REUNION\nL'an deux mille vingt-quatre, s'est tenue l'assemblée générale de\nl'Association des commerçants de Moursal, sous la présidence de\nMonsieur Ousmane Abdelkerim.\nASSOCIATION DES COMMERÇANTS DE MOURSAL\nMarché de Moursal (fictif)\nPROCÈS-VERBAL DE RÉUNION\nL'an deux mille vingt-quatre, s'est tenue l'assemblée générale de\nl'Association des commerçants de Moursal, sous la présidence de\nMonsieur Ousmane Abdelkerim.\nLe,\nR\n14\nç",
+  "texte_normalise": "association des commerccants de moursal\nmarche de moursal (fictif)\nproces-verbal de reunion\nl'an deux mille vingt-quatre, s'est tenue l'assemblee generale de\nl'association des commercants de moursal, sous la presidence de\nmonsieur ousmane abdelkerim.\nordre du jour : 1) securite du marche ; 2) cotisations de l'annee ; 3)\ndivers. apres debat, l'assemblee a decide de recruter deux gardiens de\nnuit et de fixer la cotisation mensuelle a 2 000 fcfa.\nmoursal, le 20 janvier 2024\nle secretaire\ndocument fictif - demonstration",
+  "type": "Procès-verbal",
+  "type_ar": "محضر",
+  "titre": "PROCES-VERBAL DE REUNION",
+  "date": "2024-01-20",
+  "annee": 2024,
+  "montant": null,
+  "perspective_corrigee": true,
+  "angle_corrige": -0.1,
+  "duree_traitement_s": 2.4
+}

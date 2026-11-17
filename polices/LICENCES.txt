@@ -1,0 +1,3 @@
+Polices utilisées pour générer les documents fictifs :
+- Amiri (arabe) : SIL Open Font License 1.1 — https://github.com/aliftype/amiri
+- DejaVu : licence libre Bitstream Vera / DejaVu — https://dejavu-fonts.github.io

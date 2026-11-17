@@ -1,0 +1,9 @@
+opencv-python-headless>=4.8
+numpy>=1.24
+Pillow>=10.0
+pytesseract>=0.3.10
+rapidfuzz>=3.0
+meilisearch>=0.31
+streamlit>=1.45
+arabic-reshaper>=3.0
+python-bidi>=0.4

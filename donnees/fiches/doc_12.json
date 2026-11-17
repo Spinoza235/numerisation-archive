@@ -1,0 +1,20 @@
+{
+  "id": "doc_12",
+  "fichier": "doc_12.jpg",
+  "image_origine": "documents/doc_12.jpg",
+  "image_propre": "donnees/images_propres/doc_12.png",
+  "langue": "fr",
+  "confiance_ocr": 94.9,
+  "texte": "CHARI BÂTIMENT SA\nZone industrielle de Farcha (fictif)\nTél. +235 00 00 00 03\nNOTE DE SERVICE N° 14\nÀ l'attention de tout le personnel. À compter du lundi 16 octobre 2023,\nles horaires de travail sur les chantiers sont fixés de 6 h 30 à 14 h 30 en\nraison de la chaleur. Le port du casque reste obligatoire.\nN'Djamena, le 10 octobre 2023\nLa Direction\nDocument fictif - démonstration",
+  "texte_haut": "CHARI BÂTIMENT SA\nZone industrielle de Farcha (fictif)\nTél. +235 00 00 00 03\nNOTE DE SERVICE N° 14\nÀ l'attention de tout le personnel. À compter du lundi 16 octobre 2023,\nles horaires de travail sur les chantiers sont fixés de 6 h 30 à 14 h 30 en\nraison de la chaleur. Le port du casque reste obligatoire.\nCHARI BÂTIMENT SA\nZone industrielle de Farcha (fictif)\nTél. +235 00 00 00 03\nNOTE DE SERVICE N° 14\nÀ l'attention de tout le personnel. À compter du lundi 16 octobre 2023,\nles horaires de travail sur les chantiers sont fixés de 6 h 30 à 14 h 30 en\nraison de la chaleur. Le port du casque reste obligatoire.\nx\nAR",
+  "texte_normalise": "chari batiment sa\nzone industrielle de farcha (fictif)\ntel. +235 00 00 00 03\nnote de service n° 14\na l'attention de tout le personnel. a compter du lundi 16 octobre 2023,\nles horaires de travail sur les chantiers sont fixes de 6 h 30 a 14 h 30 en\nraison de la chaleur. le port du casque reste obligatoire.\nn'djamena, le 10 octobre 2023\nla direction\ndocument fictif - demonstration",
+  "type": "Note de service",
+  "type_ar": "مذكرة",
+  "titre": "NOTE DE SERVICE N° 14",
+  "date": "2023-10-10",
+  "annee": 2023,
+  "montant": null,
+  "perspective_corrigee": true,
+  "angle_corrige": -0.1,
+  "duree_traitement_s": 2.2
+}

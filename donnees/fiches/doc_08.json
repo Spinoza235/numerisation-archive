@@ -1,0 +1,20 @@
+{
+  "id": "doc_08",
+  "fichier": "doc_08.jpg",
+  "image_origine": "documents/doc_08.jpg",
+  "image_propre": "donnees/images_propres/doc_08.png",
+  "langue": "fr",
+  "confiance_ocr": 94.5,
+  "texte": "Achta Abakar\nQuartier Ardep Djoumbal, N'Djamena (fictif)\nTél. +235 00 00 00 07\nDEMANDE D'EMPLOI\nÀ Monsieur le Directeur de la Clinique Espoir. Objet : demande d'emploi\nau poste de secrétaire médicale.\nMonsieur le Directeur, titulaire d'un BTS en secrétariat de direction et\nforte de trois ans d'expérience, j'ai l'honneur de solliciter un poste de\nsecrétaire médicale dans votre établissement. Veuillez agréer mes\nsalutations distinguées.\nN'Djamena, le 18 avril 2024\nAchta Abakar\nDocument fictif - démonstration",
+  "texte_haut": "Achta Abakar\nQuartier Ardep Djoumbal, N'Djamena (fictif)\nTél. +235 00 00 00 07\nDEMANDE D'EMPLOI\nÀ Monsieur le Directeur de la Clinique Espoir. Objet : demande d'emploi\nau poste de secrétaire médicale.\nMonsieur le Directeur, titulaire d'un BTS en secrétariat de direction et\nAchta Abakar\nQuartier Ardep Djoumbal, N'Djamena (fictif)\nTél. +235 00 00 00 07\nDEMANDE D'EMPLOI\nÀ Monsieur le Directeur de la Clinique Espoir. Objet : demande d'emploi\nau poste de secrétaire médicale.\nMonsieur le Directeur, titulaire d'un BTS en secrétariat de direction et\nn\nF\n“\n,\nat.\n’\n.",
+  "texte_normalise": "achta abakar\nquartier ardep djoumbal, n'djamena (fictif)\ntel. +235 00 00 00 07\ndemande d'emploi\na monsieur le directeur de la clinique espoir. objet : demande d'emploi\nau poste de secretaire medicale.\nmonsieur le directeur, titulaire d'un bts en secretariat de direction et\nforte de trois ans d'experience, j'ai l'honneur de solliciter un poste de\nsecretaire medicale dans votre etablissement. veuillez agreer mes\nsalutations distinguees.\nn'djamena, le 18 avril 2024\nachta abakar\ndocument fictif - demonstration",
+  "type": "Demande",
+  "type_ar": "طلب",
+  "titre": "DEMANDE D'EMPLOI",
+  "date": "2024-04-18",
+  "annee": 2024,
+  "montant": null,
+  "perspective_corrigee": true,
+  "angle_corrige": -0.1,
+  "duree_traitement_s": 2.2
+}

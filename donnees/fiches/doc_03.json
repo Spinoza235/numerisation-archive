@@ -1,0 +1,20 @@
+{
+  "id": "doc_03",
+  "fichier": "doc_03.jpg",
+  "image_origine": "documents/doc_03.jpg",
+  "image_propre": "donnees/images_propres/doc_03.png",
+  "langue": "fr",
+  "confiance_ocr": 94.2,
+  "texte": "ÉCOLE PRIVÉE LES RÔNIERS\nQuartier Chagoua, N'Djamena (fictif)\nTél. +235 00 00 00 02\nCERTIFICAT DE SCOLARITÉ\nLe directeur de l'École privée Les Rôniers certifie que l'élève Fatimé\nHaroun, née le 4 mai 2014, est régulièrement inscrite en classe de CM2\npour l'année scolaire 2024-2025.\nN'Djamena, le 15 septembre 2024\nLe Directeur\nDocument fictif - démonstration",
+  "texte_haut": "ÉCOLE PRIVÉE LES RÔNIERS\nQuartier Chagoua, N'Djamena (fictif)\nTél. +235 00 00 00 02\nCERTIFICAT DE SCOLARITE\nLe directeur de l'École privée Les Rôniers certifie que l'élève Fatimé\nHaroun, née le 4 mai 2014, est régulièrement inscrite en classe de CM2\npour l'année scolaire 2024-2025.\nÉCOLE PRIVÉE LES RÔNIERS\nQuartier Chagoua, N'Djamena (fictif)\nTél. +235 00 00 00 02\nCERTIFICAT DE SCOLARITÉ\nLe directeur de l'École privée Les Rôniers certifie que l'élève Fatimé\nHaroun, née le 4 mai 2014, est régulièrement inscrite en classe de CM2\npour l'année scolaire 2024-2025.\npn\nns",
+  "texte_normalise": "ecole privee les roniers\nquartier chagoua, n'djamena (fictif)\ntel. +235 00 00 00 02\ncertificat de scolarite\nle directeur de l'ecole privee les roniers certifie que l'eleve fatime\nharoun, nee le 4 mai 2014, est regulierement inscrite en classe de cm2\npour l'annee scolaire 2024-2025.\nn'djamena, le 15 septembre 2024\nle directeur\ndocument fictif - demonstration",
+  "type": "Certificat de scolarité",
+  "type_ar": "شهادة مدرسية",
+  "titre": "CERTIFICAT DE SCOLARITE",
+  "date": "2024-09-15",
+  "annee": 2024,
+  "montant": null,
+  "perspective_corrigee": false,
+  "angle_corrige": -0.3,
+  "duree_traitement_s": 2.1
+}

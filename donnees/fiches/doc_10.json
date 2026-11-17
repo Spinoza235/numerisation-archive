@@ -1,0 +1,20 @@
+{
+  "id": "doc_10",
+  "fichier": "doc_10.jpg",
+  "image_origine": "documents/doc_10.jpg",
+  "image_propre": "donnees/images_propres/doc_10.png",
+  "langue": "fr",
+  "confiance_ocr": 94.6,
+  "texte": "SAHEL DISTRIBUTION SARL\nAvenue Charles de Gaulle, N'Djamena (fictif)\nTél. +235 00 00 00 01\nATTESTATION DE STAGE\nNous attestons que Monsieur Mahamat Nour Adoum, étudiant en\ninformatique, a effectué un stage de trois mois au sein de notre service\nlogistique, du 12 mai au 12 août 2025. Il a fait preuve de sérieux et de\nrigueur.\nN'Djamena, le 12 août 2025\nLe Directeur général",
+  "texte_haut": "SAHEL DISTRIBUTION SARL\nAvenue Charles de Gaulle, N'Djamena (fictif)\nTél. +235 00 00 00 01\nATTESTATION DE STAGE\nNous attestons que Monsieur Mahamat Nour Adoum, étudiant en\ninformatique, a effectué un stage de trois mois au sein de notre service\nlogistique, du 12 mai au 12 août 2025. Il a fait preuve de sérieux et de\nrigueur.\nSAHEL DISTRIBUTION SARL\nAvenue Charles de Gaulle, N'Djamena (fictif)\nTél. +235 00 00 00 01\nATTESTATION DE STAGE\nNous attestons que Monsieur Mahamat Nour Adoum, étudiant en\ninformatique, a effectué un stage de trois mois au sein de notre service\nlogistique, du 12 mai au 12 août 2025. Il a fait preuve de sérieux et de\nrigueur.",
+  "texte_normalise": "sahel distribution sarl\navenue charles de gaulle, n'djamena (fictif)\ntel. +235 00 00 00 01\nattestation de stage\nnous attestons que monsieur mahamat nour adoum, etudiant en\ninformatique, a effectue un stage de trois mois au sein de notre service\nlogistique, du 12 mai au 12 aout 2025. il a fait preuve de serieux et de\nrigueur.\nn'djamena, le 12 aout 2025\nle directeur general",
+  "type": "Attestation de stage",
+  "type_ar": "شهادة تدريب",
+  "titre": "ATTESTATION DE STAGE",
+  "date": "2025-08-12",
+  "annee": 2025,
+  "montant": null,
+  "perspective_corrigee": true,
+  "angle_corrige": 0.1,
+  "duree_traitement_s": 2.2
+}

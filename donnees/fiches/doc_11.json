@@ -1,0 +1,20 @@
+{
+  "id": "doc_11",
+  "fichier": "doc_11.jpg",
+  "image_origine": "documents/doc_11.jpg",
+  "image_propre": "donnees/images_propres/doc_11.png",
+  "langue": "fr",
+  "confiance_ocr": 93.2,
+  "texte": "PHARMACIE DU MARCHÉ\nGrand Marché, N'Djamena (fictif)\nTél. +235 00 00 00 06\nBON DE COMMANDE N° BC-0089\nFournisseur : Sahel Distribution SARL.\nArticle Qté Montant\nGants d'examen (boîte) 40 60 000\nAlcool 70 % 1 L 30 45 000\nTOTAL (FCFA) 105 000\nN'Djamena, le 03/02/2025\nLe Pharmacien",
+  "texte_haut": "PHARMACIE DU MARCHÉ\nGrand Marché, N'Djamena (fictif)\nTél. +235 00 00 00 06\nBON DE COMMANDE N° BC-0089\nFournisseur : Sahel Distribution SARL.\nArticle Qté Montant\nCante dl'evamen (hnitai AN ARNO NNN\nPHARMACIE DU MARCHÉ\nGrand Marché, N'Djamena (fictif)\nTél. +235 00 00 00 06\nBON DE COMMANDE N° BC-0089\nFournisseur : Sahel Distribution SARL.\nArticle\nQté\nMontant\ntant d'eagaman (hnita\\\nan\nAN AONN",
+  "texte_normalise": "pharmacie du marche\ngrand marche, n'djamena (fictif)\ntel. +235 00 00 00 06\nbon de commande n° bc-0089\nfournisseur : sahel distribution sarl.\narticle qte montant\ngants d'examen (boite) 40 60 000\nalcool 70 % 1 l 30 45 000\ntotal (fcfa) 105 000\nn'djamena, le 03/02/2025\nle pharmacien",
+  "type": "Bon de commande",
+  "type_ar": "طلب شراء",
+  "titre": "BON DE COMMANDE N° BC-0089",
+  "date": "2025-02-03",
+  "annee": 2025,
+  "montant": 105000,
+  "perspective_corrigee": false,
+  "angle_corrige": -1.8,
+  "duree_traitement_s": 2.0
+}

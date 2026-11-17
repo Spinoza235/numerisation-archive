@@ -1,0 +1,20 @@
+{
+  "id": "doc_02",
+  "fichier": "doc_02.jpg",
+  "image_origine": "documents/doc_02.jpg",
+  "image_propre": "donnees/images_propres/doc_02.png",
+  "langue": "fr",
+  "confiance_ocr": 94.7,
+  "texte": "CHARI BÂTIMENT SA\nZone industrielle de Farcha (fictif)\nTél. +235 00 00 00 03\nATTESTATION DE TRAVAIL\nJe soussigné, directeur des ressources humaines de Chari Bâtiment SA,\natteste que Madame Clarisse Néloum est employée dans notre société en\nqualité de technicienne en génie civil depuis le 1er mars 2019.\nLa présente attestation lui est délivrée pour servir et valoir ce que de\ndroit.\nFait à N'Djamena, le 2 février 2023\nLe Directeur RH\nDocument fictif - demonstration",
+  "texte_haut": "CHARI BÂTIMENT SA\nZone industrielle de Farcha (fictif)\nTél. +235 00 00 00 03\nATTESTATION DE TRAVAIL\nJe soussigné, directeur des ressources humaines de Chari Bâtiment SA,\natteste que Madame Clarisse Néloum est employée dans notre société en\nqualité de technicienne en génie civil depuis le 1er mars 2019.\nCHARI BÂTIMENT SA\nZone industrielle de Farcha (fictif)\nTél. +235 00 00 00 03\nATTESTATION DE TRAVAIL\nJe soussigné, directeur des ressources humaines de Chari Bâtiment SA,\natteste que Madame Clarisse Néloum est employée dans notre société en\nqualité de technicienne en génie civil depuis le 1er mars 2019.",
+  "texte_normalise": "chari batiment sa\nzone industrielle de farcha (fictif)\ntel. +235 00 00 00 03\nattestation de travail\nje soussigne, directeur des ressources humaines de chari batiment sa,\natteste que madame clarisse neloum est employee dans notre societe en\nqualite de technicienne en genie civil depuis le 1er mars 2019.\nla presente attestation lui est delivree pour servir et valoir ce que de\ndroit.\nfait a n'djamena, le 2 fevrier 2023\nle directeur rh\ndocument fictif - demonstration",
+  "type": "Attestation de travail",
+  "type_ar": "شهادة عمل",
+  "titre": "ATTESTATION DE TRAVAIL",
+  "date": "2023-02-02",
+  "annee": 2023,
+  "montant": null,
+  "perspective_corrigee": true,
+  "angle_corrige": -0.0,
+  "duree_traitement_s": 2.4
+}

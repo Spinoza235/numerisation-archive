@@ -1,0 +1,20 @@
+{
+  "id": "doc_01",
+  "fichier": "doc_01.jpg",
+  "image_origine": "documents/doc_01.jpg",
+  "image_propre": "donnees/images_propres/doc_01.png",
+  "langue": "fr",
+  "confiance_ocr": 94.4,
+  "texte": "SAHEL DISTRIBUTION SARL\nAvenue Charles de Gaulle, N'Djamena (fictif)\nTél. +235 00 00 00 01\nFACTURE N° 2024-0315\nClient : Ahmat Mahamat Saleh, Boutique Al-Amal, quartier Diguel.\nDésignation Qté Montant\nRiz parfumé 25 kg 4 70 000\nHuile végétale 5 L 6 45 000\nSucre 50 kg 1 38 000\nTOTAL (FCFA) 153 000\nPaiement à 30 jours. Merci de votre confiance.\nN'Djamena, le 14/03/2024\nLa comptabilité\nDocument fictif - démonstration",
+  "texte_haut": "SAHEL DISTRIBUTION SARL\nAvenue Charles de Gaulle, N'Djamena (fictif)\nTél. +235 00 00 00 01\nFACTURE N° 2024-0315\nClient : Ahmat Mahamat Saleh, Boutique Al-Amal, quartier Diguel.\nDésignation Qté Montant\nRiz narfumé ?5 ka 4 70 000\nSAHEL DISTRIBUTION SARL\nAvenue Charles de Gaulle, N'Djamena (fictif)\nTél. +235 00 00 00 01\nFACTURE N° 2024-0315\nClient : Ahmat Mahamat Saleh, Boutique Al-Amal, quartier Diguel.\nMontant\nDésignation\nQté\nRiz narfumé 75 ka\na\n70 000",
+  "texte_normalise": "sahel distribution sarl\navenue charles de gaulle, n'djamena (fictif)\ntel. +235 00 00 00 01\nfacture n° 2024-0315\nclient : ahmat mahamat saleh, boutique al-amal, quartier diguel.\ndesignation qte montant\nriz parfume 25 kg 4 70 000\nhuile vegetale 5 l 6 45 000\nsucre 50 kg 1 38 000\ntotal (fcfa) 153 000\npaiement a 30 jours. merci de votre confiance.\nn'djamena, le 14/03/2024\nla comptabilite\ndocument fictif - demonstration",
+  "type": "Facture",
+  "type_ar": "فاتورة",
+  "titre": "FACTURE N° 2024-0315",
+  "date": "2024-03-14",
+  "annee": 2024,
+  "montant": 153000,
+  "perspective_corrigee": false,
+  "angle_corrige": 1.2,
+  "duree_traitement_s": 2.3
+}

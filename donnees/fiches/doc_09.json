@@ -1,0 +1,20 @@
+{
+  "id": "doc_09",
+  "fichier": "doc_09.jpg",
+  "image_origine": "documents/doc_09.jpg",
+  "image_propre": "donnees/images_propres/doc_09.png",
+  "langue": "fr",
+  "confiance_ocr": 92.6,
+  "texte": "IMPRIMFRIE DU LAC\nRue 40, Moursal (fictif)\nTél. +235 00 00 00 04\nFACTURE N° IL-2024-112\nClient : École privée Les Rôniers.\nDésignation Qté Montant\nCahiers 100 pages 500 100 000\nBulletins de notes : 300 45 000\nTOTAL (FCFA) 145 000\nMoursal, le 30/09/2024\nLe Gérant\nDocument fictif - démonstration",
+  "texte_haut": "IMPRIMFRIE DU LAC\nRue 40, Moursal (fictif)\nTél. +235 00 00 00 04\nFACTURE N° IL-2024-112\nClient : École privée Les Rôniers.\nDésignation Qté Montant\nCahiers 100 pages 500 100 000\nIMPRIMERIE DU LAC\nRue 40, Moursal (fictif)\nTél. +235 00 00 00 04\nFACTURE N° IL-2024-112\nClient : École privée Les Rôniers.\nDésignation\nQté\nMontant\nCahiers 100 pages\n500\n100 000",
+  "texte_normalise": "imprimfrie du lac\nrue 40, moursal (fictif)\ntel. +235 00 00 00 04\nfacture n° il-2024-112\nclient : ecole privee les roniers.\ndesignation qte montant\ncahiers 100 pages 500 100 000\nbulletins de notes : 300 45 000\ntotal (fcfa) 145 000\nmoursal, le 30/09/2024\nle gerant\ndocument fictif - demonstration",
+  "type": "Facture",
+  "type_ar": "فاتورة",
+  "titre": "FACTURE N° IL-2024-112",
+  "date": "2024-09-30",
+  "annee": 2024,
+  "montant": 145000,
+  "perspective_corrigee": false,
+  "angle_corrige": -0.2,
+  "duree_traitement_s": 2.0
+}

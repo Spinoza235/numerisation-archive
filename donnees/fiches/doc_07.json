@@ -1,0 +1,20 @@
+{
+  "id": "doc_07",
+  "fichier": "doc_07.jpg",
+  "image_origine": "documents/doc_07.jpg",
+  "image_propre": "donnees/images_propres/doc_07.png",
+  "langue": "fr",
+  "confiance_ocr": 94.9,
+  "texte": "CLINIQUE ESPOIR\nQuartier Klemat (fictif)\nTél. +235 00 00 00 05\nCONVOCATION\nMonsieur Ousmane Abdelkerim est prié de se présenter le 05/05/2025 à 9\nheures au service administratif de la Clinique Espoir pour un entretien de\nrecrutement au poste d'agent comptable.\nSe munir d'une pièce d'identité et des diplômes originaux.\nN'Djamena, le 28/04/2025\nL'Administrateur\nDocument fictif - démonstration",
+  "texte_haut": "CLINIQUE ESPOIR\nQuartier Klemat (fictif)\nTél. +235 00 00 00 05\nCONVOCATION\nMonsieur Ousmane Abdelkerim est prié de se présenter le 05/05/2025 à 9\nheures au service administratif de la Clinique Espoir pour un entretien de\nrecrutement au poste d'agent comptable.\nCLINIQUE ESPOIR\nQuartier Klemat (fictif)\nTél. +235 00 00 00 05\nCONVOCATION\nMonsieur Ousmane Abdelkerim est prié de se présenter le 05/05/2025 à 9\nheures au service administratif de la Clinique Espoir pour un entretien de\nrecrutement au poste d'agent comptable.\n_",
+  "texte_normalise": "clinique espoir\nquartier klemat (fictif)\ntel. +235 00 00 00 05\nconvocation\nmonsieur ousmane abdelkerim est prie de se presenter le 05/05/2025 a 9\nheures au service administratif de la clinique espoir pour un entretien de\nrecrutement au poste d'agent comptable.\nse munir d'une piece d'identite et des diplomes originaux.\nn'djamena, le 28/04/2025\nl'administrateur\ndocument fictif - demonstration",
+  "type": "Convocation",
+  "type_ar": "استدعاء",
+  "titre": "CONVOCATION",
+  "date": "2025-04-28",
+  "annee": 2025,
+  "montant": null,
+  "perspective_corrigee": false,
+  "angle_corrige": -0.8,
+  "duree_traitement_s": 2.2
+}

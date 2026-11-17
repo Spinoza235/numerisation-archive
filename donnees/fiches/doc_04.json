@@ -1,0 +1,20 @@
+{
+  "id": "doc_04",
+  "fichier": "doc_04.jpg",
+  "image_origine": "documents/doc_04.jpg",
+  "image_propre": "donnees/images_propres/doc_04.png",
+  "langue": "fr",
+  "confiance_ocr": 94.4,
+  "texte": "CONTRAT DE LOCATION\nEntre particuliers (fictif)\nCONTRAT DE BAIL D'HABITATION\nEntre Monsieur Moussa Brahim, propriétaire, ci-après le bailleur, et\nMonsieur Djiimadoum Ngarlem, ci-après le locataire, il a été convenu ce\nqui suit.\nArticle 1 : le bailleur loue au locataire une maison de trois pièces située\nau quartier Walia. Article 2 : le loyer mensuel est fixé à 85 000 FCFA,\npayable avant le 5 de chaque mois. Article 3 : le bail est conclu pour une\ndurée d'un an renouvelable.\nFait à N'Djamena, le 1 juin 2022\nLes deux parties\nDocument fictif - démonstration",
+  "texte_haut": "CONTRAT DE LOCATION\nEntre particuliers (fictif)\nCONTRAT DE BAIL D'HABITATION\nEntre Monsieur Moussa Brahim, propriétaire, ci-après le bailleur, et\nMonsieur Djimadoum Ngarlem, ci-après le locataire, il a été convenu ce\nqui suit.\nmu\nCONTRAT DE LOCATION\nEntre particuliers (fictif)\nCONTRAT DE BAIL D'HABITATION\nEntre Monsieur Moussa Brahim, propriétaire, ci-après le bailleur, et\nMonsieur Djimadoum Ngarlem, ci-après le locataire, il a été convenu ce\nqui suit.\n1\n,\n=\n.\na\nà",
+  "texte_normalise": "contrat de location\nentre particuliers (fictif)\ncontrat de bail d'habitation\nentre monsieur moussa brahim, proprietaire, ci-apres le bailleur, et\nmonsieur djiimadoum ngarlem, ci-apres le locataire, il a ete convenu ce\nqui suit.\narticle 1 : le bailleur loue au locataire une maison de trois pieces situee\nau quartier walia. article 2 : le loyer mensuel est fixe a 85 000 fcfa,\npayable avant le 5 de chaque mois. article 3 : le bail est conclu pour une\nduree d'un an renouvelable.\nfait a n'djamena, le 1 juin 2022\nles deux parties\ndocument fictif - demonstration",
+  "type": "Contrat",
+  "type_ar": "عقد",
+  "titre": "CONTRAT DE LOCATION",
+  "date": "2022-06-01",
+  "annee": 2022,
+  "montant": null,
+  "perspective_corrigee": true,
+  "angle_corrige": -0.0,
+  "duree_traitement_s": 2.5
+}

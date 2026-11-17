@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+donnees/meili/
+donnees/meilisearch.log
+meilisearch
+.venv/

@@ -1,0 +1,20 @@
+{
+  "id": "doc_13",
+  "fichier": "doc_13.jpg",
+  "image_origine": "documents/doc_13.jpg",
+  "image_propre": "donnees/images_propres/doc_13.png",
+  "langue": "fr",
+  "confiance_ocr": 95.2,
+  "texte": "CONTRAT DE PRESTATION DE SERVICES\nDocument fictif\nCONTRAT DE PRESTATION\nEntre Sahel Distribution SARL, le client, et l'Atelier Numérique, le\nprestataire. Objet : création d'un logiciel de gestion de stock et formation\nde deux employés.\nMontant : 1 200 000 FCFA, payable en deux tranches. Délai de réalisation\n: deux mois à compter de la signature.\nN'Djamena, le 22 juillet 2025\nLes deux parties\nDocument fictif - démonstration",
+  "texte_haut": "CONTRAT DE PRESTATION DE SERVICES\nDocument fictif\nCONTRAT DE PRESTATION\nEntre Sahel Distribution SARL, le client, et l'Atelier Numérique, le\nprestataire. Objet : création d'un logiciel de gestion de stock et formation\nde deux employés.\nCONTRAT DE PRESTATION DE SERVICES\nDocument fictif\nCONTRAT DE PRESTATION\nEntre Sahel Distribution SARL, le client, et l'Atelier Numérique, le\nprestataire. Objet : création d'un logiciel de gestion de stock et formation\nde deux employés.",
+  "texte_normalise": "contrat de prestation de services\ndocument fictif\ncontrat de prestation\nentre sahel distribution sarl, le client, et l'atelier numerique, le\nprestataire. objet : creation d'un logiciel de gestion de stock et formation\nde deux employes.\nmontant : 1 200 000 fcfa, payable en deux tranches. delai de realisation\n: deux mois a compter de la signature.\nn'djamena, le 22 juillet 2025\nles deux parties\ndocument fictif - demonstration",
+  "type": "Contrat",
+  "type_ar": "عقد",
+  "titre": "CONTRAT DE PRESTATION DE SERVICES",
+  "date": "2025-07-22",
+  "annee": 2025,
+  "montant": 1200000,
+  "perspective_corrigee": false,
+  "angle_corrige": 3.0,
+  "duree_traitement_s": 2.3
+}

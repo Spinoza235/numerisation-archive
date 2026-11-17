@@ -1,0 +1,20 @@
+{
+  "id": "doc_05",
+  "fichier": "doc_05.jpg",
+  "image_origine": "documents/doc_05.jpg",
+  "image_propre": "donnees/images_propres/doc_05.png",
+  "langue": "fr",
+  "confiance_ocr": 94.4,
+  "texte": "PHARMACIE DU MARCHÉ\nGrand Marché, N'Djamena (fictif)\nTél. +235 00 00 00 06\nREÇU DE PAIEMENT N° 0457\nReçu de Madame Hawa Issa la somme de vingt-cinq mille francs CFA (25\n000 FCFA) en règlement de sa commande de médicaments.\nMode de paiement : Airtel Money.\nN'Djamena, le 07/11/2023\nLa caissière\nDocument fictif - démonstration",
+  "texte_haut": "PHARMACIE DU MARCHÉ\nGrand Marché, N'Djamena (fictif)\nTél. +235 00 00 00 06\nREÇU DE PAIFMENT N° 0457\nReçu de Madame Hawa Issa la somme de vingt-cinq mille francs CFA (25\n000 FCFA) en règlement de sa commande de médicaments.\nMode de paiement : Airtel Money.\nPHARMACIE DU MARCHÉ\nGrand Marché, N'Djamena (fictif)\nTél. +235 00 00 00 06\nREÇU DE PAIEMENT N° 0457\nReçu de Madame Hawa Issa la somme de vingt-cinq mille francs CFA (25\n000 FCFA) en règlement de sa commande de médicaments.\nMode de paiement : Airtel Money.",
+  "texte_normalise": "pharmacie du marche\ngrand marche, n'djamena (fictif)\ntel. +235 00 00 00 06\nrecu de paiement n° 0457\nrecu de madame hawa issa la somme de vingt-cinq mille francs cfa (25\n000 fcfa) en reglement de sa commande de medicaments.\nmode de paiement : airtel money.\nn'djamena, le 07/11/2023\nla caissiere\ndocument fictif - demonstration",
+  "type": "Reçu",
+  "type_ar": "إيصال",
+  "titre": "REÇU DE PAIFMENT N° 0457",
+  "date": "2023-11-07",
+  "annee": 2023,
+  "montant": null,
+  "perspective_corrigee": false,
+  "angle_corrige": 1.5,
+  "duree_traitement_s": 2.1
+}
