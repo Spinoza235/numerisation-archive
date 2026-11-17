@@ -12,6 +12,8 @@ import re
 import time
 
 from config import DOSSIER_FICHES, MEILI_CLE, MEILI_INDEX, MEILI_URL
+from rapidfuzz.distance import Levenshtein
+
 from extraction import ARABE, normaliser
 
 PARAMETRES_MEILI = {
@@ -135,15 +137,33 @@ class Moteur:
                 continue
             contenu = normaliser(" ".join([fiche.get("titre", ""), fiche.get("texte", ""), fiche.get("texte_haut", ""),
                                            fiche.get("type", ""), fiche.get("type_ar", "")]))
-            if not all(m in contenu for m in mots):
+            # Chaque mot de la requête doit être trouvé : tel quel, ou presque (faute de frappe)
+            mots_doc = set(re.findall(r"\w+", contenu))
+            trouves = [mot_proche(m, contenu, mots_doc) for m in mots]
+            if not all(trouves):
                 continue
-            score = sum(contenu.count(m) for m in mots)
+            # un mot trouvé tel quel compte bien plus qu'un mot trouvé « presque »
+            score = sum(contenu.count(t) * (10 if t == m else 1) for t, m in zip(trouves, mots))
             fiche = dict(fiche)
-            fiche["extrait"] = extrait_local(fiche.get("texte", ""), mots, (requete or "").split())
+            fiche["extrait"] = extrait_local(fiche.get("texte", ""), trouves, (requete or "").split())
             fiche["titre_surligne"] = html.escape(fiche.get("titre", ""))
             sortie.append((score, fiche.get("date") or "", fiche))
         sortie.sort(key=lambda x: (x[0], x[1]), reverse=True)
         return [f for _, _, f in sortie[:limite]]
+
+
+def mot_proche(mot, contenu, mots_doc):
+    """Renvoie le mot du document qui correspond à `mot` (lui-même s'il est présent),
+    ou None. Tolère 1 faute pour les mots de 4 à 7 lettres, 2 fautes au-delà
+    (comme Meilisearch) : « clarise » trouve « clarisse », « nelom » trouve « neloum »."""
+    if mot in contenu:
+        return mot
+    if len(mot) < 4 or any(c.isdigit() for c in mot):  # pas de tolérance sur les nombres (2024 ≠ 2023)
+        return None
+    fautes_max = 1 if len(mot) < 8 else 2
+    candidats = [m for m in mots_doc if abs(len(m) - len(mot)) <= fautes_max
+                 and Levenshtein.distance(mot, m) <= fautes_max]
+    return min(candidats, key=lambda m: Levenshtein.distance(mot, m)) if candidats else None
 
 
 def extrait_local(texte, mots, mots_originaux=(), largeur=160):

@@ -31,5 +31,10 @@ MEILI_URL = os.getenv("MEILI_URL", "http://127.0.0.1:7700")
 MEILI_CLE = os.getenv("MEILI_MASTER_KEY", "")
 MEILI_INDEX = "documents"
 
+# Mode public (démo en ligne) : les documents déposés par les visiteurs sont analysés
+# et affichés à CE visiteur seulement, puis effacés. Ils ne rejoignent jamais l'index commun.
+# Activer avec la variable d'environnement MODE_PUBLIC=1 (ou dans les "Secrets" de Streamlit Cloud).
+MODE_PUBLIC = os.getenv("MODE_PUBLIC", "0") == "1"
+
 # Nom affiché dans l'interface
 NOM_APPLICATION = os.getenv("NOM_APPLICATION", "Archives intelligentes")

@@ -78,7 +78,20 @@ Pour recréer les 20 documents fictifs : `python generer_documents.py`.
 1. Poussez le projet sur GitHub, **avec** le dossier `donnees/` (déjà traité).
 2. Sur https://share.streamlit.io, créez une app à partir du dépôt, fichier `app.py`.
 3. Le fichier `packages.txt` installe Tesseract (fra + ara) automatiquement.
-4. En ligne, sans Meilisearch, la recherche locale prend le relais.
+4. Dans **Settings → Secrets** de l'app, ajoutez la ligne `MODE_PUBLIC = "1"`.
+5. En ligne, sans Meilisearch, la recherche intégrée prend le relais (elle tolère aussi les fautes de frappe).
+
+### Le mode public
+
+Avec `MODE_PUBLIC=1`, l'application est prête à être montrée à tout le monde :
+
+- un **guide de démarrage** en 6 étapes s'ouvre à la première visite (bouton « Revoir le guide » ensuite) ;
+- des **exemples cliquables** sous la barre de recherche (« Clarise Nelom », « موسى »…) ;
+- un document déposé par un visiteur est **analysé pour lui seul puis effacé** : il n'est jamais
+  ajouté aux archives communes ni visible par les autres visiteurs ;
+- le bouton « Réindexer » et le téléchargement des originaux sont masqués.
+
+Pour tester ce mode sur votre PC : `MODE_PUBLIC=1 streamlit run app.py`
 
 ## Limites connues (à dire au client)
 

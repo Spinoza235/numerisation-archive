@@ -20,8 +20,9 @@ from pretraitement import ecrire_image, lire_image, pretraiter
 from recherche import Moteur
 
 
-def traiter_document(chemin: Path):
-    """Traite UNE image et renvoie sa fiche (dictionnaire)."""
+def traiter_document(chemin: Path, enregistrer: bool = True, dossier_propres: Path = DOSSIER_PROPRES):
+    """Traite UNE image et renvoie sa fiche (dictionnaire).
+    enregistrer=False : analyse seulement (mode public), aucune fiche n'est écrite dans donnees/."""
     debut = time.perf_counter()
     image = lire_image(chemin)
     if image is None:
@@ -31,7 +32,7 @@ def traiter_document(chemin: Path):
     # Meilisearch n'accepte que lettres, chiffres, - et _ dans un identifiant
     # ("WhatsApp Image 2026-09-27 at 2.25.19 PM" -> "WhatsApp_Image_2026-09-27_at_2_25_19_PM")
     identifiant = re.sub(r"[^A-Za-z0-9_-]+", "_", chemin.stem).strip("_")[:100] or "document"
-    chemin_propre = DOSSIER_PROPRES / f"{identifiant}.png"
+    chemin_propre = Path(dossier_propres) / f"{identifiant}.png"
     ecrire_image(chemin_propre, propre)
 
     texte, langue, confiance = lire_texte(propre)
@@ -41,8 +42,8 @@ def traiter_document(chemin: Path):
     fiche = {
         "id": identifiant,
         "fichier": chemin.name,
-        "image_origine": str(chemin.relative_to(chemin.parents[1])),
-        "image_propre": str(chemin_propre.relative_to(chemin_propre.parents[2])),
+        "image_origine": str(chemin),
+        "image_propre": str(chemin_propre),
         "langue": langue,
         "confiance_ocr": confiance,
         "texte": texte,
@@ -52,8 +53,9 @@ def traiter_document(chemin: Path):
         **infos,
         "duree_traitement_s": round(time.perf_counter() - debut, 1),
     }
-    (DOSSIER_FICHES / f"{identifiant}.json").write_text(
-        json.dumps(fiche, ensure_ascii=False, indent=2), encoding="utf-8")
+    if enregistrer:
+        (DOSSIER_FICHES / f"{identifiant}.json").write_text(
+            json.dumps(fiche, ensure_ascii=False, indent=2), encoding="utf-8")
     return fiche
 
 
