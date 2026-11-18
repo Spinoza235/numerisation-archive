@@ -7,7 +7,9 @@ Puis ouvrez http://localhost:8501
 Pour une démo publique (en ligne) : MODE_PUBLIC=1 streamlit run app.py
 """
 import html
+import shutil
 import tempfile
+import time
 from datetime import date
 from pathlib import Path
 
@@ -44,6 +46,31 @@ def moteur():
 
 M = moteur()
 FICHES = charger_fiches()
+
+# ---------- Mode public : les archives personnelles du visiteur ----------
+# Chaque visiteur a son propre dossier temporaire. Ses documents ne sont cherchables
+# que par lui, et les dossiers de plus d'une heure sont effacés automatiquement.
+MAX_DOCS_VISITEUR = 5
+
+
+def purger_anciens_visiteurs(age_max_s=3600):
+    for d in Path(tempfile.gettempdir()).glob("zc_visiteur_*"):
+        try:
+            if time.time() - d.stat().st_mtime > age_max_s:
+                shutil.rmtree(d, ignore_errors=True)
+        except OSError:
+            pass
+
+
+def dossier_visiteur() -> Path:
+    if "dossier_visiteur" not in st.session_state or not Path(st.session_state.dossier_visiteur).exists():
+        st.session_state.dossier_visiteur = tempfile.mkdtemp(prefix="zc_visiteur_")
+    return Path(st.session_state.dossier_visiteur)
+
+
+if MODE_PUBLIC:
+    purger_anciens_visiteurs()
+MES_DOCS = st.session_state.setdefault("mes_docs", []) if MODE_PUBLIC else []
 
 MOIS = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août",
         "septembre", "octobre", "novembre", "décembre"]
@@ -141,9 +168,10 @@ st.caption("Numérisation et recherche de documents en français et en arabe · 
            "tapez un nom, un mot ou un type : le bon document s'affiche en une seconde.")
 
 c1, c2, c3, c4 = st.columns(4)
-c1.metric("Documents", len(FICHES))
-c2.metric("En français", sum(f["langue"] == "fr" for f in FICHES))
-c3.metric("En arabe", sum(f["langue"] == "ar" for f in FICHES))
+c1.metric("Documents", len(FICHES) + len(MES_DOCS),
+          delta=f"+{len(MES_DOCS)} à vous" if MES_DOCS else None)
+c2.metric("En français", sum(f["langue"] == "fr" for f in FICHES + MES_DOCS))
+c3.metric("En arabe", sum(f["langue"] == "ar" for f in FICHES + MES_DOCS))
 c4.metric("Moteur", "Meilisearch" if M.client else "Intégré")
 
 # ---------- Colonne de gauche ----------
@@ -153,10 +181,10 @@ with st.sidebar:
         st.session_state.etape_guide = 0
         guide()
     st.header("Filtres")
-    types_dispo = sorted({f["type"] for f in FICHES})
+    types_dispo = sorted({f["type"] for f in FICHES + MES_DOCS})
     types = st.multiselect("Type de document", types_dispo, placeholder="Tous les types")
     langue = st.radio("Langue", ["Toutes", "Français", "Arabe"], horizontal=True)
-    annees_dispo = sorted({f["annee"] for f in FICHES if f.get("annee")})
+    annees_dispo = sorted({f["annee"] for f in FICHES + MES_DOCS if f.get("annee")})
     annees = None
     if len(annees_dispo) > 1:
         annees = st.slider("Années", annees_dispo[0], annees_dispo[-1], (annees_dispo[0], annees_dispo[-1]))
@@ -173,7 +201,7 @@ if annees and annees == (annees_dispo[0], annees_dispo[-1]):
 
 def badges_et_extrait(r):
     rtl = r.get("langue") == "ar"
-    badges = [r.get("type", ""), date_lisible(r.get("date")),
+    badges = ["Votre document" if r.get("visiteur") else "", r.get("type", ""), date_lisible(r.get("date")),
               "Arabe" if rtl else "Français", montant_lisible(r.get("montant"))]
     return rtl, "".join(f'<span class="badge">{html.escape(b)}</span>' for b in badges if b)
 
@@ -185,7 +213,10 @@ def afficher_resultat(r):
     extrait = (r.get("extrait") or html.escape(r.get("texte", "")[:220])).replace("\n", " ")
 
     col_img, col_txt = st.columns([1, 5])
-    image_propre = DOSSIER_PROPRES / f"{r['id']}.png"
+    if r.get("visiteur"):
+        image_propre, origine = Path(r["image_propre"]), Path(r["image_origine"])
+    else:
+        image_propre, origine = DOSSIER_PROPRES / f"{r['id']}.png", DOSSIER_DOCUMENTS / r["fichier"]
     if image_propre.exists():
         col_img.image(str(image_propre), width="stretch")
     col_txt.markdown(
@@ -193,7 +224,7 @@ def afficher_resultat(r):
         f'<div class="{classe}">{extrait}</div></div>', unsafe_allow_html=True)
 
     with col_txt.expander("Ouvrir le document"):
-        afficher_detail(r, DOSSIER_DOCUMENTS / r["fichier"], image_propre, cle=r["id"])
+        afficher_detail(r, origine, image_propre, cle=r["id"])
 
 
 def afficher_detail(r, origine: Path, image_propre: Path, cle: str):
@@ -232,7 +263,8 @@ with onglet_recherche:
     for col, exemple in zip(colonnes, EXEMPLES):
         col.button(exemple, key=f"ex_{exemple}", on_click=choisir_exemple, args=(exemple,), width="stretch")
 
-    resultats, ms = M.rechercher(requete.strip(), types=types or None, langue=code_langue, annees=annees)
+    resultats, ms = M.rechercher(requete.strip(), types=types or None, langue=code_langue, annees=annees,
+                                 fiches_visiteur=MES_DOCS)
     st.markdown(f'<span class="chrono">{len(resultats)} document(s) trouvé(s) en {ms:.0f} ms</span>'
                 f' · moteur : {M.nom}', unsafe_allow_html=True)
     if not resultats:
@@ -244,23 +276,22 @@ with onglet_recherche:
 
 with onglet_ajout:
     if MODE_PUBLIC:
-        st.write("Déposez la photo d'un document **imprimé** : elle est nettoyée, lue et analysée en quelques secondes.")
-        st.markdown('<div class="astuce">Démo publique : votre document est analysé pour vous seul, '
-                    'puis effacé. Il n\'est ni conservé ni visible par les autres visiteurs. '
-                    'Évitez tout de même les documents personnels ou confidentiels.</div>', unsafe_allow_html=True)
+        st.write("Déposez la photo d'un document **imprimé** (facture, attestation, courrier…). "
+                 "Il est nettoyé, lu, classé, puis ajouté à **vos archives** : vous pourrez le retrouver "
+                 "dans l'onglet **Rechercher**.")
+        st.markdown(f'<div class="astuce">Démo publique : vos documents sont visibles par vous seul, '
+                    f'pendant votre visite ({MAX_DOCS_VISITEUR} au maximum), puis effacés automatiquement. '
+                    f'Évitez tout de même les documents personnels ou confidentiels.</div>', unsafe_allow_html=True)
     else:
         st.write("Déposez une photo ou un scan : il est nettoyé, lu, classé et rendu cherchable en quelques secondes.")
 
     fichiers = st.file_uploader("Images de documents", type=[e.strip(".") for e in EXTENSIONS_IMAGES],
-                                accept_multiple_files=not MODE_PUBLIC)
-    if fichiers and not isinstance(fichiers, list):
-        fichiers = [fichiers]
+                                accept_multiple_files=True)
 
-    if fichiers and st.button("Analyser" if MODE_PUBLIC else "Traiter les documents", type="primary"):
+    if fichiers and st.button("Ajouter aux archives", type="primary"):
         nouvelles = []
         for f in fichiers:
-            dossier_tmp = Path(tempfile.mkdtemp()) if MODE_PUBLIC else None
-            chemin = (dossier_tmp or DOSSIER_DOCUMENTS) / f.name
+            chemin = (dossier_visiteur() if MODE_PUBLIC else DOSSIER_DOCUMENTS) / f.name
             chemin.write_bytes(f.getbuffer())
             with st.status(f"Traitement de {f.name}…", expanded=False) as statut:
                 st.write("1. Nettoyage de l'image (OpenCV)")
@@ -268,7 +299,7 @@ with onglet_ajout:
                 st.write("3. Extraction de la date et du type")
                 try:
                     if MODE_PUBLIC:
-                        fiche = traiter_document(chemin, enregistrer=False, dossier_propres=dossier_tmp)
+                        fiche = traiter_document(chemin, enregistrer=False, dossier_propres=dossier_visiteur())
                     else:
                         fiche = traiter_document(chemin)
                 except Exception as e:
@@ -276,26 +307,41 @@ with onglet_ajout:
                     continue
                 statut.update(label=f"{f.name} : {fiche['type']} du {date_lisible(fiche['date'])} "
                                     f"({fiche['duree_traitement_s']} s)", state="complete")
+            nouvelles.append(fiche)
 
-            if MODE_PUBLIC:
-                # Résultat montré à ce visiteur seulement
-                rtl, badges_html = badges_et_extrait(fiche)
-                st.markdown(f'<div class="carte"><h4 class="{"rtl" if rtl else ""}">'
-                            f'{html.escape(fiche.get("titre", ""))}</h4>{badges_html}</div>', unsafe_allow_html=True)
-                afficher_detail(fiche, chemin, Path(fiche["image_propre"]), cle=f"pub_{fiche['id']}")
-                for p in dossier_tmp.iterdir():  # on efface tout de suite
-                    p.unlink()
-                dossier_tmp.rmdir()
-            else:
-                nouvelles.append(fiche)
-
-        if nouvelles:
+        if nouvelles and MODE_PUBLIC:
+            for fiche in nouvelles:
+                fiche["visiteur"] = True
+                MES_DOCS[:] = [d for d in MES_DOCS if d["id"] != fiche["id"]] + [fiche]
+            while len(MES_DOCS) > MAX_DOCS_VISITEUR:  # on retire le plus ancien
+                ancien = MES_DOCS.pop(0)
+                for cle in ("image_propre", "image_origine"):
+                    Path(ancien[cle]).unlink(missing_ok=True)
+            st.session_state.flash = (f"{len(nouvelles)} document(s) ajouté(s) à vos archives. "
+                                      "Allez dans l'onglet **Rechercher** et tapez un mot de votre document.",
+                                      nouvelles)
+        elif nouvelles:
             try:
                 M.ajouter([{k: v for k, v in f.items() if k != "texte_normalise"} for f in nouvelles])
             except RuntimeError as e:
                 st.error(f"Le document est traité mais n'a pas pu être indexé : {e}")
+                nouvelles = []
             else:
-                st.success(f"{len(nouvelles)} document(s) ajouté(s). Ils sont déjà cherchables dans l'onglet Rechercher.")
+                st.session_state.flash = (f"{len(nouvelles)} document(s) ajouté(s) aux archives. "
+                                          "Allez dans l'onglet **Rechercher** et tapez un mot du document.",
+                                          nouvelles)
+        if nouvelles:
+            st.rerun()  # réaffiche la page : les compteurs du haut passent à 21
+
+    # Message et aperçu après un ajout (affichés une seule fois)
+    if "flash" in st.session_state:
+        message, fiches_ajoutees = st.session_state.pop("flash")
+        st.success(message)
+        for fiche in fiches_ajoutees:
+            rtl, badges_html = badges_et_extrait(fiche)
+            st.markdown(f'<div class="carte"><h4 class="{"rtl" if rtl else ""}">'
+                        f'{html.escape(fiche.get("titre", ""))}</h4>{badges_html}</div>', unsafe_allow_html=True)
+            afficher_detail(fiche, Path(fiche["image_origine"]), Path(fiche["image_propre"]), cle=f"new_{fiche['id']}")
 
 # ---------- Explication ----------
 
@@ -314,4 +360,4 @@ contrat, محضر, إيصال…) et le montant total sont retrouvés automatiqu
 mot, même avec une faute de frappe, en quelques millisecondes.
 
 *Les documents de cette démonstration sont entièrement fictifs.*
-""")
+""")    

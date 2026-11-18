@@ -87,8 +87,9 @@ Avec `MODE_PUBLIC=1`, l'application est prête à être montrée à tout le mond
 
 - un **guide de démarrage** en 6 étapes s'ouvre à la première visite (bouton « Revoir le guide » ensuite) ;
 - des **exemples cliquables** sous la barre de recherche (« Clarise Nelom », « موسى »…) ;
-- un document déposé par un visiteur est **analysé pour lui seul puis effacé** : il n'est jamais
-  ajouté aux archives communes ni visible par les autres visiteurs ;
+- un visiteur peut ajouter jusqu'à **5 documents à ses propres archives temporaires** : il les retrouve
+  dans la recherche (badge « Votre document »), mais ils ne sont jamais ajoutés aux archives communes,
+  ne sont visibles par aucun autre visiteur, et sont effacés automatiquement après une heure ;
 - le bouton « Réindexer » et le téléchargement des originaux sont masqués.
 
 Pour tester ce mode sur votre PC : `MODE_PUBLIC=1 streamlit run app.py`

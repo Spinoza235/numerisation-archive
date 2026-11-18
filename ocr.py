@@ -49,6 +49,10 @@ def lire_tesseract(image):
     # Agrandir x1,5 améliore nettement la lecture (surtout l'arabe et les petits caractères)
     image = cv2.resize(image, None, fx=1.5, fy=1.5, interpolation=cv2.INTER_CUBIC)
     texte_fr, conf_fr = _tesseract(image, "fra")
+    # Page clairement française : une page arabe lue avec le modèle français donne
+    # une confiance très basse (< 60). Au-dessus de 80, on gagne du temps.
+    if conf_fr >= 80:
+        return _nettoyer(texte_fr), "fr", round(conf_fr, 1)
     texte_ar, conf_ar = _tesseract(image, "ara")
     # L'arabe lu avec le modèle français donne une confiance faible, et inversement.
     part_arabe = len(ARABE.findall(texte_ar)) / max(1, len(texte_ar.replace(" ", "")))

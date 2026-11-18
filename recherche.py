@@ -80,9 +80,14 @@ class Moteur:
 
     # ----- Recherche -----
 
-    def rechercher(self, requete, types=None, langue=None, annees=None, limite=20):
-        """Renvoie (resultats, temps_ms). Chaque résultat = la fiche + 'extrait' surligné."""
+    def rechercher(self, requete, types=None, langue=None, annees=None, limite=20, fiches_visiteur=None):
+        """Renvoie (resultats, temps_ms). Chaque résultat = la fiche + 'extrait' surligné.
+        fiches_visiteur : documents ajoutés par un visiteur (mode public), cherchés en plus
+        et affichés en premier. Ils ne sont jamais envoyés dans l'index commun."""
         debut = time.perf_counter()
+        perso = []
+        if fiches_visiteur:
+            perso = self._local(requete, types, langue, annees, limite, fiches=fiches_visiteur)
         if self.client:
             resultats = self._meili(requete, types, langue, annees, limite)
             # Meilisearch découpe mal certains mots arabes (ex. « موسى ») :
@@ -93,7 +98,7 @@ class Moteur:
                               if r["id"] not in deja]
         else:
             resultats = self._local(requete, types, langue, annees, limite)
-        return resultats[:limite], (time.perf_counter() - debut) * 1000
+        return (perso + resultats)[:limite], (time.perf_counter() - debut) * 1000
 
     def _meili(self, requete, types, langue, annees, limite):
         filtres = []
@@ -125,10 +130,10 @@ class Moteur:
             sortie.append(fiche)
         return sortie
 
-    def _local(self, requete, types, langue, annees, limite):
+    def _local(self, requete, types, langue, annees, limite, fiches=None):
         mots = [m for m in normaliser(requete or "").split() if m]
         sortie = []
-        for fiche in charger_fiches():
+        for fiche in (charger_fiches() if fiches is None else fiches):
             if types and fiche.get("type") not in types:
                 continue
             if langue and fiche.get("langue") != langue:
