@@ -92,6 +92,58 @@ def lire_titre(image, langue):
     return _nettoyer("\n".join(morceaux))
 
 
+# ---------- Sens de la page (document photographié couché ou à l'envers) ----------
+
+ROTATIONS = {90: "ROTATE_90_CLOCKWISE", 180: "ROTATE_180", 270: "ROTATE_90_COUNTERCLOCKWISE"}
+
+
+def _tourner_quart(image, angle):
+    import cv2
+    return image if angle == 0 else cv2.rotate(image, getattr(cv2, ROTATIONS[angle]))
+
+
+def _mots_lisibles(image, langue):
+    """Score de lisibilité : somme des confiances des vrais mots bien lus.
+    Un texte couché ou à l'envers donne presque 0 ; un texte droit donne un score élevé."""
+    data = pytesseract.image_to_data(image, lang=langue, config="--oem 1 --psm 6",
+                                     output_type=pytesseract.Output.DICT)
+    score, nb = 0.0, 0
+    for mot, conf in zip(data["text"], data["conf"]):
+        mot = mot.strip()
+        if float(conf) > 60 and len(mot) >= 3 and sum(c.isalpha() for c in mot) >= 3:
+            score += float(conf)
+            nb += 1
+    return score, nb
+
+
+def orienter(image):
+    """Remet la page dans le bon sens. Renvoie (image, angle appliqué : 0, 90, 180 ou 270).
+    Cas courant (page déjà droite) : une seule lecture rapide, presque rien en plus.
+    Sinon on essaie les 3 autres sens, en français et en arabe, et on garde le plus lisible."""
+    import cv2
+    echelle = min(1.0, 1300 / max(image.shape[:2]))
+    petit = cv2.resize(image, None, fx=echelle, fy=echelle, interpolation=cv2.INTER_AREA)
+
+    resultats = {}
+    for langue in ("fra", "ara"):
+        score, nb = _mots_lisibles(petit, langue)
+        resultats[(0, langue)] = score
+        if nb >= 12:  # assez de mots bien lus : la page est droite
+            return image, 0
+    for angle in (90, 270, 180):
+        tourne = _tourner_quart(petit, angle)
+        for langue in ("fra", "ara"):
+            score, nb = _mots_lisibles(tourne, langue)
+            resultats[(angle, langue)] = score
+            if nb >= 12:  # sens trouvé sans hésitation : inutile d'essayer les autres
+                return _tourner_quart(image, angle), angle
+    angle = max(resultats, key=resultats.get)[0]
+    # on ne tourne que si c'est nettement plus lisible qu'à l'origine
+    if angle != 0 and resultats[max(resultats, key=resultats.get)] > 1.5 * max(resultats[(0, "fra")], resultats[(0, "ara")]) + 100:
+        return _tourner_quart(image, angle), angle
+    return image, 0
+
+
 def lire_texte(image):
     """Renvoie (texte, langue 'fr'|'ar', confiance)."""
     if MOTEUR_OCR == "paddle":

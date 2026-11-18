@@ -15,8 +15,8 @@ from pathlib import Path
 
 from config import DOSSIER_DOCUMENTS, DOSSIER_FICHES, DOSSIER_PROPRES, EXTENSIONS_IMAGES
 from extraction import extraire, normaliser
-from ocr import lire_texte, lire_titre
-from pretraitement import ecrire_image, lire_image, pretraiter
+from ocr import lire_texte, lire_titre, orienter
+from pretraitement import angle_inclinaison, ecrire_image, lire_image, pretraiter, tourner
 from recherche import Moteur
 
 
@@ -29,6 +29,15 @@ def traiter_document(chemin: Path, enregistrer: bool = True, dossier_propres: Pa
         raise ValueError(f"Image illisible : {chemin.name}")
 
     propre, infos = pretraiter(image)
+    # Document photographié couché ou à l'envers : on le remet droit, puis on corrige
+    # la petite inclinaison qui reste (elle n'était pas mesurable quand la page était couchée)
+    propre, rotation = orienter(propre)
+    infos["rotation"] = rotation
+    if rotation:
+        angle = angle_inclinaison(propre)
+        if abs(angle) >= 0.2:
+            propre = tourner(propre, angle)
+            infos["angle_corrige"] = round(angle, 1)
     # Meilisearch n'accepte que lettres, chiffres, - et _ dans un identifiant
     # ("WhatsApp Image 2026-09-27 at 2.25.19 PM" -> "WhatsApp_Image_2026-09-27_at_2_25_19_PM")
     identifiant = re.sub(r"[^A-Za-z0-9_-]+", "_", chemin.stem).strip("_")[:100] or "document"
